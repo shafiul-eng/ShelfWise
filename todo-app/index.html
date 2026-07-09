@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App - Manage Your Tasks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1><i class="fas fa-tasks"></i> My Todo List</h1>
+            <p class="subtitle">Stay organized and productive</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Categories</h3>
+                    <ul class="category-list">
+                        <li>
+                            <button class="category-btn active" data-category="all">
+                                <i class="fas fa-list"></i> All Tasks
+                                <span class="count" id="allCount">0</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-btn" data-category="active">
+                                <i class="fas fa-circle-notch"></i> Active
+                                <span class="count" id="activeCount">0</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-btn" data-category="completed">
+                                <i class="fas fa-check-circle"></i> Completed
+                                <span class="count" id="completedCount">0</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-btn" data-category="urgent">
+                                <i class="fas fa-exclamation-circle"></i> Urgent
+                                <span class="count" id="urgentCount">0</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Quick Actions</h3>
+                    <button class="action-btn" id="clearCompletedBtn">
+                        <i class="fas fa-trash"></i> Clear Completed
+                    </button>
+                    <button class="action-btn" id="exportBtn">
+                        <i class="fas fa-download"></i> Export Tasks
+                    </button>
+                    <button class="action-btn" id="importBtn">
+                        <i class="fas fa-upload"></i> Import Tasks
+                    </button>
+                    <input type="file" id="importFile" accept=".json" style="display: none;">
+                </div>
+
+                <div class="sidebar-section stats">
+                    <h3>Statistics</h3>
+                    <div class="stat-item">
+                        <span class="stat-label">Total Tasks</span>
+                        <span class="stat-value" id="totalTasks">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Completed</span>
+                        <span class="stat-value" id="completedTasks">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Completion Rate</span>
+                        <span class="stat-value" id="completionRate">0%</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Tasks Section -->
+            <section class="tasks-section">
+                <!-- Input Area -->
+                <div class="input-area">
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            id="todoInput" 
+                            class="todo-input" 
+                            placeholder="What needs to be done?"
+                            autocomplete="off"
+                        >
+                        <button class="add-btn" id="addBtn">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="input-options">
+                        <label class="priority-label">
+                            <span>Priority:</span>
+                            <select id="prioritySelect" class="priority-select">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </label>
+                        <label class="duedate-label">
+                            <span>Due Date:</span>
+                            <input type="date" id="dueDateInput" class="duedate-input">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Filter/Sort Area -->
+                <div class="filter-area">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            class="search-input" 
+                            placeholder="Search tasks..."
+                            autocomplete="off"
+                        >
+                    </div>
+                    <div class="sort-options">
+                        <select id="sortSelect" class="sort-select">
+                            <option value="date-added">Date Added</option>
+                            <option value="priority">Priority</option>
+                            <option value="due-date">Due Date</option>
+                            <option value="alphabetical">Alphabetical</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Tasks List -->
+                <div class="tasks-list" id="tasksList">
+                    <!-- Tasks will be rendered here -->
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <i class="fas fa-inbox"></i>
+                    <h3>No tasks yet</h3>
+                    <p>Create a new task to get started!</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="storage.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
