@@ -31,6 +31,7 @@ pip install -r requirements.txt
 
 1. Run the game:
 ```bash
+cd carrom-game
 python main.py
 ```
 
@@ -73,7 +74,6 @@ carrom-game/
 ├── requirements.txt     # Dependencies
 └── README.md           # This file
 ```
-
 ### Module Descriptions
 
 - **main.py**: Entry point that launches the game
@@ -121,6 +121,13 @@ The game implements simplified 2D physics:
 ## License
 
 MIT License - Feel free to modify and distribute
+- [ ] Better graphics
+- [ ] Difficulty levels
+- [ ] Statistics and leaderboards
+
+## License
+
+MIT License
 
 ## Author
 
